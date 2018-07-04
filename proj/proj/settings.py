@@ -35,7 +35,6 @@ djcelery.setup_loader()
 BROKER_URL = 'redis://localhost:6379/0'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -133,4 +132,25 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'collect_static')
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+
+# default ansible private key file
+DEFAULT_ANSIBLE_PRIVATE_KEY = '/home/dengsc/.ssh/id_rsa'
+DEFAULT_ANSIBLE_USER = 'dengsc'
+DEFAULT_ANSIBLE_PASSWORD = os.environ.get('PLAYBOOK_PASSWORD', '')
+
+
+# ansible playbook path
+PLAYBOOKS_PATH = os.path.join(BASE_DIR, 'playbooks')
+ANSIBLE_ROLES_PATH = os.path.join(PLAYBOOKS_PATH, 'roles')

@@ -1,0 +1,11 @@
+---
+
+- name: exec echo
+  shell: echo "{{ ansible_fqdn }}"
+  register: rs_out
+
+- name: show debug stdout
+  debug:
+    var: rs_out.stdout
+    verbosity: 0
+...

@@ -103,3 +103,5 @@ ENV/
 # user add
 *.sqlite3
 *.pid
+*.ieda*
+proj/.idea/
